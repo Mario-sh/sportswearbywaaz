@@ -1,99 +1,96 @@
-import { ArrowRight, Phone, MapPin, Mail, Clock } from 'lucide-react';
+import { ArrowRight, Phone, MapPin, Mail, Clock, Instagram, Twitter, Facebook, Linkedin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (
-    <footer className="bg-brand-gray text-white pt-20 pb-10 px-6 md:px-12 lg:px-24 font-sans text-sm">
-      <div className="max-w-7xl mx-auto space-y-20">
+    <footer className="footer bg-brand-dark text-white pt-32 pb-12 px-6 md:px-12 lg:px-24 font-sans border-t border-white/5">
+      <div className="max-w-7xl mx-auto">
         
-        {/* Top Footer Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 mt-4 lg:grid-cols-4 gap-12 border-b border-white/10 pb-20">
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-20 mb-24">
           
-          {/* Logo */}
-          <div className="flex items-start gap-3 col-span-1">
-            <svg width="40" height="40" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-white">
-              <path d="M4 16L16 4L28 16L16 28L4 16Z" fill="currentColor" />
-              <path d="M8 16L16 8L24 16L16 24L8 16Z" fill="#1A1A1A" />
-            </svg>
-            <span className="font-extended text-3xl font-bold tracking-tighter pt-1">PLR</span>
-          </div>
-
-          {/* Links col 1 */}
-          <div className="flex flex-col space-y-4 text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">Home</a>
-            <a href="#" className="hover:text-white transition-colors">New</a>
-            <a href="#" className="hover:text-white transition-colors">Woman</a>
-            <a href="#" className="hover:text-white transition-colors">Store</a>
-            <a href="#" className="hover:text-white transition-colors">Contacts</a>
-          </div>
-
-          {/* Links col 2 */}
-          <div className="flex flex-col space-y-4 text-gray-400">
-            <a href="#" className="hover:text-white transition-colors">Instagram</a>
-            <a href="#" className="hover:text-white transition-colors">Twitter</a>
-            <a href="#" className="hover:text-white transition-colors">Facebook</a>
-            <a href="#" className="hover:text-white transition-colors">Linkedin</a>
-            <a href="#" className="hover:text-white transition-colors">Contacts</a>
-          </div>
-
-          {/* Newsletter */}
-          <div className="col-span-1 lg:col-span-1">
-            <h3 className="font-extended font-bold text-2xl mb-4">NEWSLETTER</h3>
-            <p className="text-gray-400 mb-6">Want to know about our offers first?</p>
-            <form className="flex border-b border-gray-600 pb-2 flex-wrap">
-              <input 
-                type="email" 
-                placeholder="example@gmail.com" 
-                className="bg-transparent outline-none flex-1 font-medium text-white placeholder-gray-500 py-1"
-                required
-              />
-              <button type="submit" className="bg-white text-brand-gray w-8 h-8 flex items-center justify-center hover:bg-brand-yellow transition-colors shrink-0">
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
-          </div>
-        </div>
-
-        {/* Contact Info Bar */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-gray-400 border-b border-white/10 pb-16">
-          <div className="flex gap-4">
-            <Phone className="w-5 h-5 text-white shrink-0" />
-            <div>
-              <p className="text-white mb-1">0(550)123-45-67</p>
-              <p className="text-xs">Round the clock</p>
+          {/* Brand Column */}
+          <div className="lg:col-span-5 space-y-10">
+            <div className="flex items-center gap-4">
+              <svg width="48" height="48" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-brand-yellow transition-transform hover:rotate-12 duration-500">
+                <path d="M4 16L16 4L28 16L16 28L4 16Z" fill="currentColor" />
+                <path d="M8 16L16 8L24 16L16 24L8 16Z" fill="#1A1A1A" />
+              </svg>
+              <span className="font-extended text-5xl font-black tracking-tighter italic">PLR</span>
+            </div>
+            <p className="text-white/40 text-lg font-medium max-w-sm leading-relaxed tracking-tight">
+              Pushing the boundaries of human performance through innovative design and sustainable textiles. Join the movement.
+            </p>
+            <div className="flex gap-4">
+              {[Instagram, Twitter, Facebook, Linkedin].map((Icon, i) => (
+                <a key={i} href="#" className="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-brand-yellow hover:text-brand-dark transition-all duration-300">
+                  <Icon className="w-5 h-5" />
+                </a>
+              ))}
             </div>
           </div>
-          <div className="flex gap-4">
-            <MapPin className="w-5 h-5 text-white shrink-0" />
-            <div>
-              <p className="text-white mb-1">320 North Cambridge St.</p>
-              <p className="text-xs">Mankato, MN 56001</p>
+
+          {/* Navigation Columns */}
+          <div className="lg:col-span-3 grid grid-cols-2 gap-8">
+            <div className="space-y-8">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">Store</h4>
+              <ul className="space-y-4">
+                {['Collections', 'New Arrival', 'Best Sellers', 'On Sale'].map(item => (
+                  <li key={item}><Link to="/store" className="text-sm font-bold text-white/60 hover:text-brand-yellow transition-colors">{item}</Link></li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-8">
+              <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-white/20">Company</h4>
+              <ul className="space-y-4">
+                {['Our Story', 'Lab Residencies', 'Contact', 'Press'].map((item) => (
+                  <li key={item}><Link to={item === 'Contact' ? '/contact' : '#'} className="text-sm font-bold text-white/60 hover:text-brand-yellow transition-colors">{item}</Link></li>
+                ))}
+              </ul>
             </div>
           </div>
-          <div className="flex gap-4">
-            <Mail className="w-5 h-5 text-white shrink-0" />
-            <div>
-              <p className="text-white mb-1">info@plr.com</p>
-              <p className="text-xs">support@plr.com</p>
-            </div>
-          </div>
-          <div className="flex gap-4">
-            <Clock className="w-5 h-5 text-white shrink-0" />
-            <div>
-              <p className="text-white mb-1">Mo-Sa: 07:00-23:00</p>
-              <p className="text-xs">Su: 07:00 - 16:00</p>
+
+          {/* Newsletter Column */}
+          <div className="lg:col-span-4 space-y-10">
+            <div className="bg-white/5 p-10 rounded-[2.5rem] border border-white/5 space-y-6">
+              <h4 className="text-3xl font-extended font-black italic tracking-tighter">STAY AHEAD</h4>
+              <p className="text-white/40 text-sm font-medium">Join our inner circle for exclusive drops and performance insights.</p>
+              <form className="relative">
+                <input 
+                  type="email" 
+                  placeholder="name@email.com" 
+                  className="w-full bg-brand-dark border border-white/10 rounded-2xl px-6 py-5 text-sm font-bold placeholder:text-white/20 outline-none focus:border-brand-yellow transition-colors"
+                  required
+                />
+                <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-brand-yellow rounded-xl flex items-center justify-center hover:bg-white transition-all">
+                  <ArrowRight className="w-5 h-5 text-brand-dark" />
+                </button>
+              </form>
             </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-gray-500 text-xs">
-          <p>Copyright © 2026 PLR. All Rights Reserved.</p>
-          <div className="flex gap-4 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Privacy & Cookies</a>
-            <span>|</span>
-            <a href="#" className="hover:text-white transition-colors">Ts&Cs</a>
-            <span>|</span>
-            <a href="#" className="hover:text-white transition-colors">Accessibility</a>
+        {/* Bottom Bar */}
+        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex flex-wrap justify-center gap-10">
+            <div className="flex items-center gap-3">
+              <Phone className="w-4 h-4 text-brand-yellow" />
+              <span className="text-[10px] font-black uppercase tracking-widest">+1 (555) 000-PLR</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Mail className="w-4 h-4 text-brand-yellow" />
+              <span className="text-[10px] font-black uppercase tracking-widest">hello@plr-sport.com</span>
+            </div>
+          </div>
+          
+          <p className="text-[10px] font-black uppercase tracking-[0.2em] text-white/20">
+            © 2026 PLR CORPORATE. SYSTEM_BUILD_V2.0
+          </p>
+
+          <div className="flex gap-8 text-[10px] font-black uppercase tracking-widest text-white/20">
+            <a href="#" className="hover:text-white transition-colors">Privacy</a>
+            <a href="#" className="hover:text-white transition-colors">Shipment</a>
+            <a href="#" className="hover:text-white transition-colors">Cookies</a>
           </div>
         </div>
 
@@ -101,3 +98,4 @@ export default function Footer() {
     </footer>
   );
 }
+
